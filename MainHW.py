@@ -20,20 +20,52 @@ def read_file(file_path: str) -> list:
     return(records)
 
 def total_and_avarege_calculation (records):
-    #calculates the total and avarege of the records list 
+    """
+    calculates the total and avarege of the records list 
+
+    Input:
+    records (list)
+        list of all records
+    
+    Output:
+    total,average(float)
+        total and avarege of a records list 
+
+    """
     total = sum(float(record['Grade']) for record in records)
     average = total / len(records)
     return (total,average)
 
 
 def filter_results(records):
-    #filter the grades by the 80.0 grade 
+    """
+    filter the grades by the 80.0 grade 
+
+    Input:
+    records (list)
+        list of all records
+    
+    Output:
+    filtered_records(list)
+        filtered list 
+
+    """
     filtered_records = [record for record in records if float(record['Grade']) >= 80.0]
     return(filtered_records)
 
 
 def print_results(records):
-    #prints the student report for the filtered records.
+    """
+    prints the student report for the filtered records.
+
+    Input:
+    records (list)
+        list of all records
+    
+    Output:
+    print of the information
+
+    """
     print("Student Report")
     print("--------------")
     for record in filtered_records:
@@ -43,23 +75,27 @@ def print_results(records):
 
 
 def main():
-    #Main function to run the code generally 
+    """
+    
+    Main function to run the code generally
+     
+    """
     file_path = input("Enter the path to the CSV file: ")
-
     #request the input of the path to the CSV file with students' data 
+
     records = read_file(file_path)
-
     #runs the function and creates the list with records
-    total,average = total_and_avarege_calculation (records)
 
+    total,average = total_and_avarege_calculation (records)
     #run the function of total and avarege  
+
     print(f"Average Grade: {average}")
     print("--------------------")  
-
     #prints avarege grade 
-    filtered_records = filter_results(records)
 
+    filtered_records = filter_results(records)
     #creates a list with records where the grade is greater than or equal to 80
+    
     print_results(filtered_records)
     #print record of filtered results 
     
